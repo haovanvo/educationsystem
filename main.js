@@ -64,7 +64,10 @@ const peer = new Peer(clientId, {
     host: 'haovopeerserver.herokuapp.com',
     secure: true, 
     port: 443,
-    path: '/live'
+    path: '/live',
+    config: {'iceServers': [
+        { url: 'stun:stun.l.google.com:19302' }
+      ]} 
 });
 
 peer.on('open', id => {
