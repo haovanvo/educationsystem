@@ -65,9 +65,9 @@ const peer = new Peer(clientId, {
     secure: true, 
     port: 443,
     path: '/live',
-    config: {'iceServers': [
+    iceServers: [
         { url: 'stun:stun.l.google.com:19302' }
-      ]} 
+      ] 
 });
 
 peer.on('open', id => {
