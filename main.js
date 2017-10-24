@@ -1,26 +1,6 @@
 const socket = io('https://haovosocketserver.herokuapp.com/');
 
-//$('#div-chat').hide();
-
-let customConfig;
-
-// $.ajax({
-//   url: "https://service.xirsys.com/ice",
-//   data: {
-//     ident: "vanpho",
-//     secret: "2b1c2dfe-4374-11e7-bd72-5a790223a9ce",
-//     domain: "vanpho93.github.io",
-//     application: "default",
-//     room: "default",
-//     secure: 1
-//   },
-//   success: function (data, status) {
-//     // data.d is where the iceServers object lives
-//     customConfig = data.d;
-//     console.log(customConfig);
-//   },
-//   async: false
-// });
+$('#div-chat').hide();
 
 socket.on('DANH_SACH_ONLINE', arrUserInfo => {
     $('#div-chat').show();
@@ -28,12 +8,12 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
 
     arrUserInfo.forEach(user => {
         const { ten, peerId } = user;
-        $('#ulUser').append(`<li id="${peerId}">${ten}</li>`);
+        $('#ulUser').append(`<li id="${peerId}">${ten}-${peerId}</li>`);
     });
 
     socket.on('CO_NGUOI_DUNG_MOI', user => {
         const { ten, peerId } = user;
-        $('#ulUser').append(`<li id="${peerId}">${ten}</li>`);
+        $('#ulUser').append(`<li id="${peerId}">${ten}-${peerId}</li>`);
     });
 
     socket.on('AI_DO_NGAT_KET_NOI', peerId => {
